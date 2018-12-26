@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, FlatList} from 'react-native';
-import {URL} from '../../constant/Constants'
+import {URL} from '../../constant/Constants';
+import MovieItem from '../../components/MovieItem';
 
 export class MovieList extends Component {
   constructor(props) {
@@ -8,7 +9,8 @@ export class MovieList extends Component {
     this.state = {
     };
   }
-  componentDidMount() {    
+  
+  async componentDidMount() {    
       console.log("1")
     return fetch(URL)
     .then((response) => response.json())
@@ -33,7 +35,11 @@ export class MovieList extends Component {
         <View style={styles.container}>
         <FlatList
           data= {this.state.dataSource}
-          renderItem={({item}) => <Text>{item.title}, {item.overview}</Text>}
+          renderItem={({item, index}) =>
+           <MovieItem
+           item = {item}
+           index = {index}/>
+          }
           keyExtractor={({id}, index) => id}
         />
       </View>
@@ -59,7 +65,7 @@ async function callMoviesAPI() {
 const styles = StyleSheet.create({
     container: {
      flex: 1,
-     paddingTop: 22
+     padding: 22
     },
     item: {
       padding: 10,
