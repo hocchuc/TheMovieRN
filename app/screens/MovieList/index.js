@@ -3,6 +3,7 @@ import { View, FlatList, Image} from 'react-native';
 import {URL} from '../../constant/Constants';
 import MovieItem from '../../components/MovieItem';
 import {styles} from './style';
+
 export class MovieList extends Component {
   constructor(props) {
     super(props);
@@ -11,8 +12,13 @@ export class MovieList extends Component {
     };
   }
   
-  callBackFromItem = () => {
+  callBackFromItem = (index, item) => {
     console.log("callback from item")
+    console.log(index)
+    console.log(item)
+    this.props.navigation.navigate('Detail',{
+      item 
+    })
   }
 
   async componentDidMount() {    

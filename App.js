@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Alert, View, Text, StyleSheet, Button } from 'react-native';
-import { createStackNavigator, createAppContainer} from "react-navigation";
+import { createStackNavigator, createAppContainer } from "react-navigation";
 import { MovieList } from './app/screens/MovieList';
 import { MovieDetail } from './app/screens/MovieDetail';
 
@@ -12,25 +12,26 @@ export class HomePage extends Component {
   }
 
   render() {
-    const {navigate} = this.props.navigation;
+    const { navigate } = this.props.navigation;
+    navigate('Movies', {})
     return (
       <View style={styles.container}>
         <Text> IMovie </Text>
-        <Button title="Welcome to TheMovieRN" 
-        onPress={() => {
-          navigate('Movies', {})
-        }}/>
+        <Button title="Welcome to TheMovie RN"
+          onPress={() => {
+
+          }} />
       </View>
     );
   };
-} 
+}
 const styles = StyleSheet.create({
-  container : { 
+  container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  button : {
+  button: {
     color: "#841584",
     margin: 50,
     backgroundColor: "blue",
@@ -42,7 +43,7 @@ const AppNavigator = createStackNavigator(
   {
     Home: HomePage,
     Movies: MovieList,
-    Detail: MovieDetail 
+    Detail: MovieDetail
   },
   {
     initialRouteName: "Home"
